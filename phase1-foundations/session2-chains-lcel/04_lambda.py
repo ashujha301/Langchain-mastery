@@ -18,7 +18,7 @@ def assess_urgency(inputs: dict) -> dict:
     
     return {
         "document": inputs["document"],
-        "urgency_prefix": "🚨 URGENT DOCUMENT\n" if is_urgent else "📄 STANDARD DOCUMENT\n"
+        "urgency_prefix": "URGENT DOCUMENT\n" if is_urgent else "STANDARD DOCUMENT\n"
     }
 
 def format_output(inputs: dict) -> str:

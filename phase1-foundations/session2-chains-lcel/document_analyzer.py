@@ -39,7 +39,7 @@ brief_prompt = ChatPromptTemplate.from_messages([
 def detect_urgency(doc: str) -> str:
     keywords = ["urgent", "asap", "immediately", "critical", "overdue", "deadline", "today"]
     found = [w for w in keywords if w in doc.lower()]
-    return f"⚠️ Urgent keywords detected: {', '.join(found)}" if found else "✅ No urgent keywords"
+    return f"Urgent keywords detected: {', '.join(found)}" if found else "No urgent keywords"
 
 # --- Master Chain ---
 analyze_chain = (
@@ -54,7 +54,7 @@ analyze_chain = (
 
 def run_analyzer(document: str):
     print("\n" + "="*60)
-    print("📊 DOCUMENT ANALYSIS REPORT")
+    print("DOCUMENT ANALYSIS REPORT")
     print("="*60)
     
     results = analyze_chain.invoke({"document": document})
@@ -63,11 +63,11 @@ def run_analyzer(document: str):
     brief = (brief_prompt | llm | parser).invoke({"summary": results["summary"]})
     
     print(f"\n📌 Document Size: {results['doc_length']}")
-    print(f"🔔 Urgency Check: {results['urgency']}")
-    print(f"\n📝 SUMMARY\n{results['summary']}")
-    print(f"\n✅ ACTION ITEMS\n{results['action_items']}")
-    print(f"\n⚠️  RISK ASSESSMENT\n{results['risk']}")
-    print(f"\n💼 EXECUTIVE BRIEF\n{brief}")
+    print(f"Urgency Check: {results['urgency']}")
+    print(f"\ SUMMARY\n{results['summary']}")
+    print(f"\ ACTION ITEMS\n{results['action_items']}")
+    print(f"\n RISK ASSESSMENT\n{results['risk']}")
+    print(f"\ EXECUTIVE BRIEF\n{brief}")
     print("\n" + "="*60)
 
 # --- Test Documents ---
